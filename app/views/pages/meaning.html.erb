@@ -1,0 +1,25 @@
+
+<h1><%= @response["word"] %></h1>
+<div>
+  <% @response["phonetics"].each do |phonetic| %>
+    <p><%= phonetic["text"] %></p>
+    <%= audio_tag(phonetic["audio"], controls: true) %>
+  <% end %>
+</div>
+<div>
+  <% @response["meanings"].each do |meaning| %>
+    <h2><%= meaning["partOfSpeech"] %></h2>
+    <h3>Definitions</h3>
+    <% meaning["definitions"].each do |definition| %>
+      <p><%= definition["definition"] %></p>
+    <% end %>
+    <h3>Synonyms</h3>
+    <% meaning["synonyms"].each do |synonym| %>
+      <p><%= synonym %></p>
+    <% end %>
+    <h3>Anthonyms</h3>
+    <% meaning["antonyms"].each do |antonym| %>
+      <p><%= antonym %></p>
+    <% end %>
+  <% end %>
+</div>
